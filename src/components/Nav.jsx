@@ -5,6 +5,8 @@ const Nav = () => {
     const navLinks = <>
         <NavLink className='text-base mx-4 font-bold' to = '/'>Home</NavLink>
         <NavLink className='text-base mx-4 font-bold' to = '/addCoffee'>Add Coffee</NavLink>
+        <NavLink className='text-base mx-4 font-bold' to = '/register'>Register</NavLink>
+        <NavLink className='text-base mx-4 font-bold' to = '/users'>Users</NavLink>
     </>
     return (
         <div className="navbar bg-base-100">

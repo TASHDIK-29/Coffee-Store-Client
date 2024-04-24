@@ -9,6 +9,9 @@ import MainLayout from './pages/MainLayout';
 import Home from './components/Home';
 import AddCoffee from './pages/AddCoffee';
 import UpdateCoffee from './pages/UpdateCoffee';
+import Register from './pages/Register';
+import AuthProvider from './components/authProvider/AuthProvider';
+import Users from './pages/Users';
 
 
 const router = createBrowserRouter([
@@ -17,18 +20,27 @@ const router = createBrowserRouter([
     element: <MainLayout></MainLayout>,
     children: [
       {
-        path:'/',
+        path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/coffee')
+        loader: () => fetch('https://coffee-store-server-kappa-eight.vercel.app/coffee')
       },
       {
-        path:'/addCoffee',
+        path: '/addCoffee',
         element: <AddCoffee></AddCoffee>
       },
       {
-        path:'/updateCoffee/:id',
+        path: '/updateCoffee/:id',
         element: <UpdateCoffee></UpdateCoffee>,
-        loader: ({params}) => fetch(`http://localhost:5000/coffee/${params.id}`)
+        loader: ({ params }) => fetch(`https://coffee-store-server-kappa-eight.vercel.app/coffee/${params.id}`)
+      },
+      {
+        path: '/register',
+        element: <Register></Register>,
+      },
+      {
+        path: '/users',
+        element: <Users></Users>,
+        loader: () => fetch('https://coffee-store-server-kappa-eight.vercel.app/user')
       },
     ]
   },
@@ -38,6 +50,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
