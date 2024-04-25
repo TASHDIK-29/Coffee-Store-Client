@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import User from "../components/User";
 import { useState } from "react";
 import Swal from "sweetalert2";
@@ -61,10 +61,12 @@ const Users = () => {
                     <tbody>
                         {
                             users.map((user, idx) => <tr key={idx}>
+                                <td>{user._id}</td>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.createAt}</td>
                                 <td><button onClick={() => handelDeleteUser(user._id)} className="bg-red-600 p-2 rounded-md text-white font-bold">X</button></td>
+                                <td><Link to = {`/updateUser/${user._id}`} className="bg-gray-600 p-2 rounded-md text-white font-bold">Edit</Link></td>
                             </tr>)
                         }
                     </tbody>

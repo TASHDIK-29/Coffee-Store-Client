@@ -12,6 +12,7 @@ import UpdateCoffee from './pages/UpdateCoffee';
 import Register from './pages/Register';
 import AuthProvider from './components/authProvider/AuthProvider';
 import Users from './pages/Users';
+import UpdateUser from './pages/UpdateUser';
 
 
 const router = createBrowserRouter([
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
         path: '/users',
         element: <Users></Users>,
         loader: () => fetch('https://coffee-store-server-kappa-eight.vercel.app/user')
+      },
+      {
+        path: '/updateUser/:id',
+        element: <UpdateUser></UpdateUser>,
+        loader: ({ params }) => fetch(`https://coffee-store-server-kappa-eight.vercel.app/user/${params.id}`)
       },
     ]
   },
